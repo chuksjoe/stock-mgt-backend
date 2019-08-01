@@ -21,6 +21,6 @@ describe('Testing the Server Entry Point.', () => {
 		.end((err, res) => {
 			expect(res.status).to.equal(200);
 			done();
-		})
-	})
+		});
+	});
 });
