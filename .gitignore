@@ -1,8 +1,9 @@
 node_modules/
-.coveralls.yml 
+.coveralls.yml
+coverage/
 *Thumbs.db
 .nyc_output
 dist
-cloudinary.yml
+build
 package-lock.json
 .env*
