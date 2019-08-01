@@ -1,0 +1,28 @@
+{
+  "name": "stock-inventory-backend",
+  "version": "1.0.0",
+  "description": "Backend logics for a stock inventory application, inspired from my long term service to my late dad in his local shop where we sold mixture of cosmetic, provisions and pharmacitical stuffs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuksjoe/stock-inventory-backend.git"
+  },
+  "keywords": [
+    "stock-inventory-backend",
+    "stock",
+    "inventory",
+    "business",
+    "management",
+    "store",
+    "store-management"
+  ],
+  "author": "Chukwunonso Orjiakor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chuksjoe/stock-inventory-backend/issues"
+  },
+  "homepage": "https://github.com/chuksjoe/stock-inventory-backend#readme"
+}

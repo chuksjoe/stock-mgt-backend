@@ -1,0 +1,8 @@
+node_modules/
+.coveralls.yml 
+*Thumbs.db
+.nyc_output
+dist
+cloudinary.yml
+package-lock.json
+.env*
