@@ -18,8 +18,11 @@ branches:
 services:
   - postgresql
 
+addons:
+  postgresql: "10"
+
 before_script:
-  - psql -c 'create database stockMgt;' -U postgres
+  - psql -c 'create database stock_mgt;' -U postgres
 
 script:
   - npm test
