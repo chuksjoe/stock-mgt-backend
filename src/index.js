@@ -4,20 +4,28 @@ import customEnv from 'custom-env';
 import debug from 'debug';
 import cors from 'cors';
 
+import routes from './routes/index.route';
+
 customEnv.env(true);
 dotenv.config();
 
 const debugLog = debug('web-app');
 const app = express();
 const { port, mode } = process.env;
+const prefix = '/api/v1';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.options('*', cors());
 
-app.get('/', (req, res) => {
-	res.status(200).send({ status: 200, message: 'Welcome to my Stock/Inventory Web App API.' });
+routes(prefix, app);
+
+app.get(prefix, (req, res) => {
+	res.status(200).send({
+		status: 200,
+		message: 'Welcome to my Stock/Inventory Web App API.',
+	});
 });
 
 const listener = app.listen(port || 5000, () => {

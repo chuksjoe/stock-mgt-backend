@@ -1,86 +1,93 @@
 {
-  "name": "stock-mgt-backend",
-  "version": "1.0.0",
-  "description": "Backend logics for a stock/inventory management application, inspired from my long term service to my late dad in his local shop where we sold mixture of cosmetic, provisions and pharmacitical stuffs.",
-  "main": "index.js",
-  "scripts": {
-    "build": "babel -d ./build ./src -s",
-    "start": "set NODE_ENV=development& babel-node src/index.js",
-    "dev": "set DEBUG=web-app & set NODE_ENV=development& nodemon src/index.js --exec babel-node",
-    "test": "set DEBUG=web-app & set NODE_ENV=test& mocha --timeout 0 --require babel-core/register --reporter spec test/ --exec babel-node --exit",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "generate-lcov": "nyc report --reporter=text-lcov >lcov.info",
-    "coveralls-coverage": "coveralls < lcov.info",
-    "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chuksjoe/stock-inventory-backend.git"
-  },
-  "keywords": [
-    "stock-inventory-backend",
-    "stock",
-    "inventory",
-    "business",
-    "management",
-    "store",
-    "store-management"
-  ],
-  "author": "Chukwunonso Orjiakor",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chuksjoe/stock-inventory-backend/issues"
-  },
-  "homepage": "https://github.com/chuksjoe/stock-inventory-backend#readme",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "mocha": "^6.2.0",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nodemon": "^1.19.0",
-    "nyc": "^14.1.1"
-  },
-  "dependencies": {
-    "async": "^3.1.0",
-    "bcrypt": "^3.0.6",
-    "cors": "^2.8.5",
-    "coveralls": "^3.0.5",
-    "custom-env": "^1.0.2",
-    "debug": "^4.1.1",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "make-runnable": "^1.3.6",
-    "moment": "^2.24.0",
-    "morgan": "^1.9.1",
-    "nodemailer": "^6.3.0",
-    "pg": "^7.12.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ]
-  },
-  "env": {
-    "node": true,
-    "es6": true
-  },
-  "parserOption": {
-    "sourceType": "module",
-    "ecmaVersion": 2018
-  },
-  "engines": {
-    "node": ">=8"
-  }
+	"name": "stock-mgt-backend",
+	"version": "1.0.0",
+	"description": "Backend logics for a stock/inventory management application, inspired from my long term service to my late dad in his local shop where we sold mixture of cosmetic, provisions and pharmacitical stuffs.",
+	"main": "index.js",
+	"scripts": {
+		"build": "babel -d ./build ./src -s",
+		"start": "set NODE_ENV=development& babel-node src/index.js",
+		"dev": "set DEBUG=web-app & set NODE_ENV=development& nodemon src/index.js --exec babel-node",
+		"test": "set DEBUG=web-app & set NODE_ENV=test& sequelize db:migrate:undo:all & sequelize db:migrate & mocha --timeout 0 --require babel-core/register --reporter spec test/ --exec babel-node --exit",
+		"local:test": "set DEBUG=web-app & set NODE_ENV=local_test& sequelize db:migrate:undo:all & sequelize db:migrate & mocha --timeout 0 --require babel-core/register --reporter spec test/ --exec babel-node --exit",
+		"coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
+		"generate-lcov": "nyc report --reporter=text-lcov >lcov.info",
+		"coveralls-coverage": "coveralls < lcov.info",
+		"coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage",
+		"products:model": "sequelize model:create --name products --attributes name:string,brand:string,category:string,maker:string,quantity:integer,unit_price:real,selling_price:real",
+		"staffs:model": "sequelize model:create --name staffs --attributes firstname:string,lastname:string,email:string,password:string,role:string,department:string,phone:string,address:string",
+		"create:tables": "set NODE_ENV=development& sequelize db:migrate",
+		"migrate:rollback": "set NODE_ENV=development& sequelize db:migrate:undo:all",
+		"recreate:db": "set NODE_ENV=development& sequelize db:drop & sequelize db:create",
+		"set:db:test:url": "export DATABASE_URL=postgres://postgres:dynamiq007@127.0.0.1:5400/stock_mgt_test",
+		"set:db:dev:url": "export DATABASE_URL=postgres://postgres:dynamiq007@127.0.0.1:5400/stock_mgt"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chuksjoe/stock-inventory-backend.git"
+	},
+	"keywords": [
+		"stock-inventory-backend",
+		"stock",
+		"inventory",
+		"business",
+		"management",
+		"store",
+		"store-management"
+	],
+	"author": "Chukwunonso Orjiakor",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/chuksjoe/stock-inventory-backend/issues"
+	},
+	"homepage": "https://github.com/chuksjoe/stock-inventory-backend#readme",
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"chai": "^4.2.0",
+		"chai-http": "^4.3.0",
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb-base": "^13.2.0",
+		"eslint-plugin-import": "^2.18.2",
+		"mocha": "^6.2.0",
+		"mocha-lcov-reporter": "^1.3.0",
+		"nodemon": "^1.19.0",
+		"nyc": "^14.1.1"
+	},
+	"dependencies": {
+		"async": "^3.1.0",
+		"bcrypt": "^3.0.6",
+		"cors": "^2.8.5",
+		"coveralls": "^3.0.5",
+		"custom-env": "^1.0.2",
+		"debug": "^4.1.1",
+		"dotenv": "^8.0.0",
+		"express": "^4.17.1",
+		"make-runnable": "^1.3.6",
+		"moment": "^2.24.0",
+		"morgan": "^1.9.1",
+		"nodemailer": "^6.3.0",
+		"path": "^0.12.7",
+		"pg": "^7.12.0",
+		"pg-hstore": "^2.3.3",
+		"sequelize": "^5.12.2"
+	},
+	"babel": {
+		"presets": [
+			[
+				"env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
+		]
+	},
+	"parserOption": {
+		"sourceType": "module",
+		"ecmaVersion": 2018
+	},
+	"engines": {
+		"node": ">=8"
+	}
 }

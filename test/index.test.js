@@ -16,11 +16,12 @@ describe('Testing the Server Entry Point.', () => {
 		app.port.should.be.eql(parseInt(process.env.PORT, 10));
 	});
 	it('should successfully hit the index endpoint.', (done) => {
-		chai.request(app)
-		.get('/')
-		.end((err, res) => {
-			expect(res.status).to.equal(200);
-			done();
-		});
+		chai
+			.request(app)
+			.get('/api/v1/')
+			.end((err, res) => {
+				expect(res).to.have.status(200);
+				done();
+			});
 	});
 });
