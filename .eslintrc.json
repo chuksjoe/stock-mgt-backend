@@ -1,5 +1,10 @@
 {
 	"extends": "airbnb-base",
+	"env": {
+		"node": true,
+		"es6": true,
+		"mocha": true
+	},
 	"rules": {
 		"indent": [0, "tab"],
 		"no-tabs": 0,

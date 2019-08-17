@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  node:
+    image: chuksjoe/stock-mgt-backend
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    command: npm run dev
+  db:
+    image: postgres:latest
+    ports:
+      - '5432:5432'

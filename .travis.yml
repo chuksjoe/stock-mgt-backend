@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-  - "stable"
+  - 'stable'
 
 cache:
   directories:
-    - "node_modules"
+    - 'node_modules'
 
 env:
   global:
@@ -19,10 +19,11 @@ services:
   - postgresql
 
 addons:
-  postgresql: "10"
- 
+  postgresql: '10'
+
 install:
-- npm install -q --no-color --no-progress
+  - npm install -q --no-color --no-progress
+  - npm install sequelize-cli sequelize
 
 before_script:
   - psql -c 'create database stock_mgt;' -U postgres
