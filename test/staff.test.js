@@ -34,8 +34,8 @@ describe('Test for the Staffs controller functions', () => {
 					lastname: 'Afolayun',
 					email: 'kunle@yahoo.com',
 				});
+				done();
 			});
-		done();
 	});
 
 	it('should return all created staff entity', (done) => {
@@ -43,9 +43,9 @@ describe('Test for the Staffs controller functions', () => {
 			.request(app)
 			.get(`${prefix}/staff`)
 			.end((err, res) => {
-				res.should.have.status(20);
-				expect(res.body.data).to.have.length(12);
+				res.should.have.status(200);
+				expect(res.body.data).to.have.length(1);
+				done();
 			});
-		done();
 	});
 });

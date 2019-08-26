@@ -10,4 +10,4 @@ router
 	.get('/staff', staffs.getAll)
 	.get('/staff/:staff_id', staffs.getStaffById);
 
-module.exports = router;
+export default router;

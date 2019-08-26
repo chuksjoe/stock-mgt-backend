@@ -23,10 +23,10 @@ addons:
 
 install:
   - npm install -q --no-color --no-progress
-  - npm install sequelize-cli sequelize
 
 before_script:
-  - psql -c 'create database stock_mgt;' -U postgres
+  - psql -c 'CREATE DATABASE stock_mgt_test;' -U postgres
+  - psql -c 'CREATE USER root WITH PASSWORD "password";' -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build

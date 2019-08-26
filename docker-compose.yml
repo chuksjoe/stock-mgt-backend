@@ -6,13 +6,21 @@ services:
     build: .
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./node_modules
+    networks:
+      - backend
     ports:
       - '3000:3000'
     depends_on:
       - db
-    command: npm run dev
+
   db:
     image: postgres:latest
+    networks:
+      - backend
     ports:
       - '5432:5432'
+
+networks:
+  backend:
+    driver: bridge
