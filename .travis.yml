@@ -23,6 +23,7 @@ addons:
 
 install:
   - npm install -q --no-color --no-progress
+  - npm install -g sequelize-cli
 
 before_script:
   - psql -c 'CREATE DATABASE stock_mgt_test;' -U postgres
