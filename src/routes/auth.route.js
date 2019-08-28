@@ -6,9 +6,11 @@ import authValidator from '../validation/auth.validation';
 
 const router = Router();
 
-router.post('/auth/signup',
+router.post(
+    '/auth/signup',
     authValidator.validateSignup,
     authValidator.validateResult,
-    auth.signup);
+    auth.signup,
+);
 
 export default router;

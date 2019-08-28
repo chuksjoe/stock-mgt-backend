@@ -45,7 +45,8 @@ describe('Test for the Auth controller functions', () => {
         .send(mutatedStaff)
         .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.error[0]).to.equal('Please, enter a valid email address.');
+            expect(res.body.error[0]).to
+            .equal('Please, enter a valid email address.');
             done();
         });
     });
@@ -55,9 +56,8 @@ describe('Test for the Auth controller functions', () => {
         .send(staff)
         .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.error[0]).to.equal(
-							`User with this email (${staff.email}) already exist.`,
-						);
+            expect(res.body.error[0]).to
+            .equal(`User with this email (${staff.email}) already exist.`);
             done();
         });
     });
@@ -71,9 +71,8 @@ describe('Test for the Auth controller functions', () => {
         .send(mutatedStaff)
         .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.error[0]).to.equal(
-							'The length of the password must be 8 and above.',
-						);
+            expect(res.body.error[0]).to
+            .equal('The length of the password must be 8 and above.');
             done();
         });
     });
@@ -87,9 +86,8 @@ describe('Test for the Auth controller functions', () => {
         .send(mutatedStaff)
         .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.error[0]).to.equal(
-							'Password must contain at least one digit.',
-						);
+            expect(res.body.error[0]).to
+            .equal('Password must contain at least one digit.');
             done();
         });
     });
@@ -103,7 +101,8 @@ describe('Test for the Auth controller functions', () => {
         .send(mutatedStaff)
         .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.error[0]).to.equal('First name cannot be empty.');
+            expect(res.body.error[0]).to
+            .equal('First name cannot be empty.');
             done();
         });
     });
@@ -117,7 +116,8 @@ describe('Test for the Auth controller functions', () => {
         .send(mutatedStaff)
         .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.error[0]).to.equal('Last name cannot be empty.');
+            expect(res.body.error[0]).to
+            .equal('Last name cannot be empty.');
             done();
         });
     });
