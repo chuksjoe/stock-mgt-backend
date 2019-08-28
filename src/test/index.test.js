@@ -3,7 +3,7 @@ import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
 import customEnv from 'custom-env';
 
-import app from '../src/index';
+import app from '../index';
 
 dotenv.config();
 customEnv.env(true);
