@@ -3,12 +3,9 @@ import models from '../db/models';
 const { staffs } = models;
 
 export default {
-	findStaffByEmail: async (email) => {
+	signupStaff: async (staff) => {
 		try {
-			return await staffs
-				.findOne({
-					where: { email },
-				});
+			return await staffs.create(staff);
 		} catch (err) {
 			throw err;
 		}

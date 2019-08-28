@@ -2,7 +2,7 @@ import models from '../db/models';
 
 const { staffs } = models;
 
-module.exports = {
+export default {
 	createStaff: (req, res) => {
 		const {
 			firstname,

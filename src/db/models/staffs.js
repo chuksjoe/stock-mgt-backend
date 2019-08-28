@@ -1,4 +1,10 @@
-module.exports = (sequelize, DataTypes) => {
+/* eslint-disable no-param-reassign */
+
+import { hashSync, genSaltSync } from 'bcrypt';
+
+export default (sequelize, DataTypes) => {
+  const salt = genSaltSync(10);
+
   const staffs = sequelize.define('staffs', {
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
@@ -15,5 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'added_by',
     });
   };
+  staffs.beforeCreate((staff) => {
+    staff.password = hashSync(staff.password, salt);
+  });
   return staffs;
 };
