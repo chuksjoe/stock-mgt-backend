@@ -19,7 +19,7 @@ module.exports = {
 		port: DB_PORT,
 		dialect: 'postgres',
 	},
-	test: {
+	local_test: {
 		username: DB_USERNAME,
 		password: DB_PASSWORD,
 		database: DATABASE,
@@ -27,7 +27,7 @@ module.exports = {
 		port: DB_PORT,
 		dialect: 'postgres',
 	},
-	remote_test: {
+	test: {
 		// use_env_variable: DATABASE_URL,
 		username: 'root',
 		password: 'password',
