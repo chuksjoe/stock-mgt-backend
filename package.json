@@ -56,7 +56,7 @@
 	},
 	"dependencies": {
 		"async": "^3.1.0",
-		"bcrypt": "^3.0.6",
+		"bcrypt": "^5.0.0",
 		"cors": "^2.8.5",
 		"coveralls": "^3.0.5",
 		"custom-env": "^1.0.2",
